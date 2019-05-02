@@ -1,0 +1,24 @@
+sudo: required
+services:
+  - docker
+
+before_install:
+  - docker build -t t4james/react-test -f ./client/Dockerfile.dev ./client
+
+scripts:
+  - docker run t4james/react-test npm test -- --coverage
+
+after_success:
+  - docker build -t t4james/multi-client ./client
+  - docker build -t t4james/multi-nginx ./nginx
+  - docker build -t t4james/multi-server ./server
+  - docker build -t t4james/multi-worker ./worker
+
+  # Log in to the docker CLI
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+
+  # Push created prod images to Docker Hub
+  - docker push t4james/multi-client
+  - docker push t4james/multi-nginx
+  - docker push t4james/multi-server
+  - docker push t4james/multi-worker

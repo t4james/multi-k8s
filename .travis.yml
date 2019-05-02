@@ -6,7 +6,7 @@ before_install:
   - docker build -t t4james/react-test -f ./client/Dockerfile.dev ./client
 
 scripts:
-  - docker run t4james/react-test npm test -- --coverage
+  - docker run t4james/react-test npm run test -- --coverage
 
 after_success:
   - docker build -t t4james/multi-client ./client

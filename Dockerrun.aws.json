@@ -1,0 +1,40 @@
+{
+    "AWSEBDockerrunVersion": 2,
+    "containerDefinitions": [
+        {
+            "name":"client",
+            "image": "t4james/multi-client",
+            "hostname": "client",
+            "essential": false
+        },
+
+        {
+            "name":"server",
+            "image": "t4james/multi-server",
+            "hostname": "api",
+            "essential": false  
+        },
+
+        {
+            "name":"worker",
+            "image": "t4james/multi-worker",
+            "hostname": "worker",
+            "essential": false  
+        },
+
+        {
+            "name":"nginx",
+            "image": "t4james/multi-nginx",
+            "hostname": "nginx",
+            "essential": true,
+            "portMappings": [
+                {
+                    "hostPort": 80,
+                    "containerPort": 80
+                }
+            ],
+            "links": ["client", "server"]
+
+        }
+    ]
+}

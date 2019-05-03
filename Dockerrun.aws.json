@@ -6,7 +6,7 @@
             "image": "t4james/multi-client",
             "hostname": "client",
             "essential": false,
-            "memmory": 128
+            "memory": 128
         },
 
         {
@@ -14,7 +14,7 @@
             "image": "t4james/multi-server",
             "hostname": "api",
             "essential": false, 
-            "memmory": 128
+            "memory": 128
         },
 
         {
@@ -22,7 +22,7 @@
             "image": "t4james/multi-worker",
             "hostname": "worker",
             "essential": false,
-            "memmory": 128
+            "memory": 128
         },
 
         {
@@ -37,7 +37,7 @@
                 }
             ],
             "links": ["client", "server"],
-            "memmory": 128
+            "memory": 128
 
         }
     ]

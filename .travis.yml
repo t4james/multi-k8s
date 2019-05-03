@@ -23,15 +23,15 @@ after_success:
   - docker push t4james/multi-server
   - docker push t4james/multi-worker
 
-  deploy:
-    provider: elasticbeanstalk
-    region: ap-southeast-2
-    app: multi-docker
-    env: MultiDocker-env
-    bucket_name: elasticbeanstalk-ap-southeast-2-669021628010
-    bucket_path: docker-multi
-    on:
-      branch: master
-    access_key_id: $AWS_ACCESS_KEY
-    secret_access_key:
-      secure: $AWS_SECRET_KEY
+deploy:
+  provider: elasticbeanstalk
+  region: ap-southeast-2
+  app: multi-docker
+  env: MultiDocker-env
+  bucket_name: elasticbeanstalk-ap-southeast-2-669021628010
+  bucket_path: docker-multi
+  on:
+    branch: master
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key:
+    secure: $AWS_SECRET_KEY
